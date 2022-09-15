@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkColors", "src\DarkColors\DarkColors.csproj", "{F3F54819-587D-420C-8165-4551C875F562}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkColorsTests", "tests\DarkColorsTests\DarkColorsTests.csproj", "{3726A206-ECB0-4319-B2BD-89E70C816E20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3F54819-587D-420C-8165-4551C875F562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3F54819-587D-420C-8165-4551C875F562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3F54819-587D-420C-8165-4551C875F562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3F54819-587D-420C-8165-4551C875F562}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3726A206-ECB0-4319-B2BD-89E70C816E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3726A206-ECB0-4319-B2BD-89E70C816E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3726A206-ECB0-4319-B2BD-89E70C816E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3726A206-ECB0-4319-B2BD-89E70C816E20}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BD6C5DDE-3940-4035-B7CF-C07C22F33C22}
+	EndGlobalSection
+EndGlobal

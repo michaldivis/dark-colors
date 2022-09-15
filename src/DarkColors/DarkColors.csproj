@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<PropertyGroup>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageId>Divis.DarkColors</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>michaldivis</Authors>
+		<Company>Michal Diviš</Company>
+		<Product>Dark Colors</Product>
+		<Description>C# color helpers - color blender.</Description>
+		<PackageProjectUrl>https://github.com/michaldivis/dark-colors</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/michaldivis/dark-colors</RepositoryUrl>
+		<PackageTags>colors, color blending</PackageTags>
+		<NeutralLanguage>en</NeutralLanguage>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageIcon>icon.png</PackageIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\..\assets\icon.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+</Project>
