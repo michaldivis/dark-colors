@@ -4,6 +4,10 @@
 
 C# color helpers - color blender.
 
+> What's the resulting color of #AABBCC with 70% opacity on a white background?
+
+**That's what this library is for!**
+
 ## Nuget
 
 [![Nuget](https://img.shields.io/nuget/v/Divis.DarkColors?label=Divis.DarkColors)](https://www.nuget.org/packages/Divis.DarkColors/)
@@ -22,19 +26,24 @@ Blend multiple colors together with transparency support.
 
 ### Basic
 ```csharp
-var baseColor = Color.FromArgb(0, 0, 0); //The base color. This one can't be transparent. If it is, the alpha channel will be ignored.
+//The base color. This one can't be transparent. If it is, the alpha channel will be ignored.
+var baseColor = Color.FromArgb(0, 0, 0); 
 
-var colorToAdd = Color.FromArgb(125, 55, 13); //A color to add. This one can have transparency.
+//A color to add. This one can have transparency.
+var colorToAdd = Color.FromArgb(125, 55, 13); 
 
 var twoColorsCombined = ColorBlender.Combine(baseColor, colorToAdd);
 ```
 
 ### Advanced
 ```csharp
-var baseColor = Color.FromArgb(0, 0, 0); //The base color. This one can't be transparent. If it is, the alpha channel will be ignored.
+//The base color. This one can't be transparent. If it is, the alpha channel will be ignored.
+var baseColor = Color.FromArgb(0, 0, 0); 
 
-var colorToAdd = Color.FromArgb(127, 125, 55, 13); //A color to add. This one can have transparency.
-var colorToAddLayer = new ColorLayer(colorToAdd, 50); //The color's amount is set to 50% and it's alpha channel is at 50% so in the result, only 25% of this color will be added on top of the base color.
+//A color to add. This one can have transparency.
+var colorToAdd = Color.FromArgb(127, 125, 55, 13); 
+//The color's amount is set to 50% and it's alpha channel is at 50% so in the result, only 25% of this color will be added on top of the base color.
+var colorToAddLayer = new ColorLayer(colorToAdd, 50); 
 
 var twoColorsCombined = ColorBlender.Combine(baseColor, colorToAddLayer);
 
@@ -49,7 +58,8 @@ var threeColorsCombined = ColorBlender.Combine(baseColor, colorToAddLayer, anoth
 Using the `Color`'s alpha channel:
 ```csharp
 var baseColor = Color.FromArgb(0, 0, 0);
-var colorToAdd = Color.FromArgb(127, 125, 55, 13); //set 50% transparency using the color Alpha channel
+//set 50% transparency using the color Alpha channel
+var colorToAdd = Color.FromArgb(127, 125, 55, 13);
 var twoColorsCombined = ColorBlender.Combine(baseColor, colorToAdd);
 ```
 
@@ -57,15 +67,18 @@ Using the `ColorLayer`'s `AmountPercentage` property:
 ```csharp
 var baseColor = Color.FromArgb(0, 0, 0);
 var colorToAdd = Color.FromArgb(125, 55, 13);
-var colorToAddLayer = new ColorLayer(colorToAdd, 50); //set 50% transparency using the color AmountPercentage property of the ColorLayer
+//set 50% transparency using the color AmountPercentage property of the ColorLayer
+var colorToAddLayer = new ColorLayer(colorToAdd, 50); 
 var twoColorsCombined = ColorBlender.Combine(baseColor, colorToAdd);
 ```
 
 Using both the `Color`'s alpha channel and `ColorLayer`'s `AmountPercentage` property:
 ```csharp
 var baseColor = Color.FromArgb(0, 0, 0);
-var colorToAdd = Color.FromArgb(127, 125, 55, 13); //set 50% transparency using the color Alpha channel
-var colorToAddLayer = new ColorLayer(colorToAdd, 50); //set 50% transparency using the color AmountPercentage property of the ColorLayer. The resulting color will only be added by 25% because both color's Alpha and layer's AmountPercentage were used.
+//set 50% transparency using the color Alpha channel
+var colorToAdd = Color.FromArgb(127, 125, 55, 13); 
+//set 50% transparency using the color AmountPercentage property of the ColorLayer. The resulting color will only be added by 25% because both color's Alpha and layer's AmountPercentage were used.
+var colorToAddLayer = new ColorLayer(colorToAdd, 50); 
 var twoColorsCombined = ColorBlender.Combine(baseColor, colorToAdd);
 ```
 

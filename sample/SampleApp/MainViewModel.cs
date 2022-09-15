@@ -38,19 +38,24 @@ public class MainViewModel
 
     private void SimpleExample()
     {
-        var baseColor = Color.FromArgb(0, 0, 0); //The base color. This one can't be transparent. If it is, the alpha channel will be ignored.
+        //The base color. This one can't be transparent. If it is, the alpha channel will be ignored.
+        var baseColor = Color.FromArgb(0, 0, 0);
 
-        var colorToAdd = Color.FromArgb(125, 55, 13); //A color to add. This one can have transparency.
+        //A color to add. This one can have transparency.
+        var colorToAdd = Color.FromArgb(125, 55, 13);
 
         var twoColorsCombined = ColorBlender.Combine(baseColor, colorToAdd);
     }
 
     private void AdvancedExample()
     {
-        var baseColor = Color.FromArgb(0, 0, 0); //The base color. This one can't be transparent. If it is, the alpha channel will be ignored.
+        // The base color.This one can't be transparent. If it is, the alpha channel will be ignored.
+        var baseColor = Color.FromArgb(0, 0, 0);
 
-        var colorToAdd = Color.FromArgb(127, 125, 55, 13); //A color to add. This one can have transparency.
-        var colorToAddLayer = new ColorLayer(colorToAdd, 50); //The color's amount is set to 50% and it's alpha channel is at 50% so in the result, only 25% of this color will be added on top of the base color.
+        //A color to add. This one can have transparency.
+        var colorToAdd = Color.FromArgb(127, 125, 55, 13);
+        //The color's amount is set to 50% and it's alpha channel is at 50% so in the result, only 25% of this color will be added on top of the base color.
+        var colorToAddLayer = new ColorLayer(colorToAdd, 50); 
 
         var twoColorsCombined = ColorBlender.Combine(baseColor, colorToAddLayer);
 
@@ -63,7 +68,8 @@ public class MainViewModel
     private void TransparencyUsingAlphaExample()
     {
         var baseColor = Color.FromArgb(0, 0, 0);
-        var colorToAdd = Color.FromArgb(127, 125, 55, 13); //set 50% transparency using the color Alpha channel
+        //set 50% transparency using the color Alpha channel
+        var colorToAdd = Color.FromArgb(127, 125, 55, 13); 
         var twoColorsCombined = ColorBlender.Combine(baseColor, colorToAdd);
     }
 
@@ -71,15 +77,18 @@ public class MainViewModel
     {
         var baseColor = Color.FromArgb(0, 0, 0);
         var colorToAdd = Color.FromArgb(125, 55, 13);
-        var colorToAddLayer = new ColorLayer(colorToAdd, 50); //set 50% transparency using the color AmountPercentage property of the ColorLayer
+        //set 50% transparency using the color AmountPercentage property of the ColorLayer
+        var colorToAddLayer = new ColorLayer(colorToAdd, 50); 
         var twoColorsCombined = ColorBlender.Combine(baseColor, colorToAdd);
     }
 
     private void TransparencyUsingAlphaAndAmountExample()
     {
         var baseColor = Color.FromArgb(0, 0, 0);
-        var colorToAdd = Color.FromArgb(127, 125, 55, 13); //set 50% transparency using the color Alpha channel
-        var colorToAddLayer = new ColorLayer(colorToAdd, 50); //set 50% transparency using the color AmountPercentage property of the ColorLayer. The resulting color will only be added by 25% because both color's Alpha and layer's AmountPercentage were used.
+        //set 50% transparency using the color Alpha channel
+        var colorToAdd = Color.FromArgb(127, 125, 55, 13);
+        //set 50% transparency using the color AmountPercentage property of the ColorLayer. The resulting color will only be added by 25% because both color's Alpha and layer's AmountPercentage were used.
+        var colorToAddLayer = new ColorLayer(colorToAdd, 50); 
         var twoColorsCombined = ColorBlender.Combine(baseColor, colorToAdd);
     }
 

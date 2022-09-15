@@ -9,7 +9,7 @@ public class ColorBlenderTests
     [InlineData(25, "#10153c")]
     [InlineData(65, "#29389e")]
     [InlineData(100, "#4056F4")]
-    public void Combine_ShouldWork_WhenAddingSingeNonTransparentColor(int percentage, string expectedHex)
+    public void CombineWithLayers_ShouldWork_WhenAddingSingeNonTransparentColor(int percentage, string expectedHex)
     {
         var result = ColorBlender.Combine(Hex("#000"), new ColorLayer[]
         {
@@ -23,7 +23,7 @@ public class ColorBlenderTests
     [InlineData(25, "#080b1f")]
     [InlineData(65, "#151c4f")]
     [InlineData(100, "#202b7a")]
-    public void Combine_ShouldWork_WhenAddingSingeTransparentColor(int percentage, string expectedHex)
+    public void CombineWithLayers_ShouldWork_WhenAddingSingeTransparentColor(int percentage, string expectedHex)
     {
         var result = ColorBlender.Combine(Hex("#000"), new ColorLayer[]
         {
@@ -33,7 +33,7 @@ public class ColorBlenderTests
     }
 
     [Fact]
-    public void Combine_ShouldWork_WhenAddingMultipleNonTransparentColors()
+    public void CombineWithLayers_ShouldWork_WhenAddingMultipleNonTransparentColors()
     {
         var result = ColorBlender.Combine(Hex("#000"), new ColorLayer[]
         {
@@ -44,7 +44,7 @@ public class ColorBlenderTests
     }
 
     [Fact]
-    public void Combine_ShouldWork_WhenAddingMultipleTransparentColors()
+    public void CombineWithLayers_ShouldWork_WhenAddingMultipleTransparentColors()
     {
         var result = ColorBlender.Combine(Hex("#000"), new ColorLayer[]
         {
@@ -52,6 +52,24 @@ public class ColorBlenderTests
             new(Hex("#5CB1740F"), 55) //#B1740F with 36% transparency
         });
         AssertColorsMatch(result, Hex("#2b2121"));
+    }
+
+    [Theory]
+    [InlineData("#004056F4", "#000")] //0%
+    [InlineData("#404056F4", "#10153c")] //25%
+    [InlineData("#A64056F4", "#29389e")] //65%
+    [InlineData("#FF4056F4", "#4056F4")] //100%
+    public void CombineWithColors_ShouldWork_WhenAddingSingeColor(string inputHex, string expectedHex)
+    {
+        var result = ColorBlender.Combine(Hex("#000"), Hex(inputHex));
+        AssertColorsMatch(result, Hex(expectedHex));
+    }
+
+    [Fact]
+    public void CombineWithColors_ShouldWork_WhenAddingMultipleColors()
+    {
+        var result = ColorBlender.Combine(Hex("#000"), Hex("#634056F4"), Hex("#40B1740F"));
+        AssertColorsMatch(result, Hex("#3f364b"));
     }
 
     private static void AssertColorsMatch(Color actual, Color expected)

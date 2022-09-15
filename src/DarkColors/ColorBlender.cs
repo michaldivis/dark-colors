@@ -19,7 +19,7 @@ public static class ColorBlender
 
         foreach (var color in colors)
         {
-            result = Blend(result, color, 100);
+            result = Blend(result, color);
         }
 
         return result;
@@ -33,7 +33,7 @@ public static class ColorBlender
     /// <returns>Color blending result</returns>
     public static Color Combine(Color nonTransparentBase, Color color)
     {
-        return Blend(nonTransparentBase, color, 100);
+        return Blend(nonTransparentBase, color);
     }
 
     /// <summary>
@@ -67,8 +67,13 @@ public static class ColorBlender
         return Blend(nonTransparentBase, layer.Color, amount);
     }
 
-    private static Color Blend(Color source, Color added, double addedManualAmount)
+    private static Color Blend(Color source, Color added, double addedManualAmount = 1d)
     {
+        if(addedManualAmount < 0d || addedManualAmount > 1d)
+        {
+            throw new ArgumentOutOfRangeException(nameof(addedManualAmount), addedManualAmount, "Amount has to be in range 0-1");
+        }
+
         var addedTransparencyAmount = (double)added.A / 255;
         var addedAmount = addedManualAmount * addedTransparencyAmount;
         var r = BlendChannel(source.R, added.R, addedAmount);
