@@ -3,11 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkColors", "src\DarkColors\DarkColors.csproj", "{F3F54819-587D-420C-8165-4551C875F562}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkColors", "src\DarkColors\DarkColors.csproj", "{F3F54819-587D-420C-8165-4551C875F562}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkColorsTests", "tests\DarkColorsTests\DarkColorsTests.csproj", "{3726A206-ECB0-4319-B2BD-89E70C816E20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkColorsTests", "tests\DarkColorsTests\DarkColorsTests.csproj", "{3726A206-ECB0-4319-B2BD-89E70C816E20}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{4C3F0518-245F-42B9-B2AE-274C9E4DD06F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1E880736-C551-447D-B277-7AB5E5C54CE0}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "sample\SampleApp\SampleApp.csproj", "{5BD77404-E3CD-4244-B0AB-0FF189CFE0BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +22,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4C3F0518-245F-42B9-B2AE-274C9E4DD06F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C3F0518-245F-42B9-B2AE-274C9E4DD06F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3F54819-587D-420C-8165-4551C875F562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F3F54819-587D-420C-8165-4551C875F562}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3F54819-587D-420C-8165-4551C875F562}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -25,6 +30,12 @@ Global
 		{3726A206-ECB0-4319-B2BD-89E70C816E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3726A206-ECB0-4319-B2BD-89E70C816E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3726A206-ECB0-4319-B2BD-89E70C816E20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C3F0518-245F-42B9-B2AE-274C9E4DD06F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C3F0518-245F-42B9-B2AE-274C9E4DD06F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BD77404-E3CD-4244-B0AB-0FF189CFE0BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BD77404-E3CD-4244-B0AB-0FF189CFE0BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BD77404-E3CD-4244-B0AB-0FF189CFE0BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BD77404-E3CD-4244-B0AB-0FF189CFE0BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
