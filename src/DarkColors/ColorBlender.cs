@@ -11,6 +11,35 @@ public static class ColorBlender
     /// Blend a base color with one or more colors
     /// </summary>
     /// <param name="nonTransparentBase">Base color - transparency will be ignored</param>
+    /// <param name="colors">Colors to add - supports transparency</param>
+    /// <returns>Color blending result</returns>
+    public static Color Combine(Color nonTransparentBase, params Color[] colors)
+    {
+        var result = nonTransparentBase;
+
+        foreach (var color in colors)
+        {
+            result = Blend(result, color, 100);
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// Blend a base color with one or more colors
+    /// </summary>
+    /// <param name="nonTransparentBase">Base color - transparency will be ignored</param>
+    /// <param name="color">Color to add - supports transparency</param>
+    /// <returns>Color blending result</returns>
+    public static Color Combine(Color nonTransparentBase, Color color)
+    {
+        return Blend(nonTransparentBase, color, 100);
+    }
+
+    /// <summary>
+    /// Blend a base color with one or more colors
+    /// </summary>
+    /// <param name="nonTransparentBase">Base color - transparency will be ignored</param>
     /// <param name="layers">Layers to add - supports transparency</param>
     /// <returns>Color blending result</returns>
     public static Color Combine(Color nonTransparentBase, params ColorLayer[] layers)
@@ -24,6 +53,18 @@ public static class ColorBlender
         }
 
         return result;
+    }
+
+    /// <summary>
+    /// Blend a base color with one or more colors
+    /// </summary>
+    /// <param name="nonTransparentBase">Base color - transparency will be ignored</param>
+    /// <param name="layer">Layer to add - supports transparency</param>
+    /// <returns>Color blending result</returns>
+    public static Color Combine(Color nonTransparentBase, ColorLayer layer)
+    {
+        var amount = (double)layer.AmountPercentage / 100;
+        return Blend(nonTransparentBase, layer.Color, amount);
     }
 
     private static Color Blend(Color source, Color added, double addedManualAmount)
