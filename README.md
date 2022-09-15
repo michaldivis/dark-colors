@@ -4,6 +4,10 @@
 
 C# color helpers - color blender.
 
+> What's the resulting color of #AABBCC with 70% opacity on a white background?
+
+**That's what this library is for!**
+
 ## Nuget
 
 [![Nuget](https://img.shields.io/nuget/v/Divis.DarkColors?label=Divis.DarkColors)](https://www.nuget.org/packages/Divis.DarkColors/)
