@@ -98,6 +98,7 @@ Find dominant color in an image.
 
 <img src="assets/sample_screenshot_analyzer.png?raw=true">
 
+### Basic usage
 ```csharp
 //array of pixels that represents an image
 Color[] pixels; 
@@ -105,7 +106,7 @@ Color[] pixels;
 List<DominantColorCandidate> candidates = ColorAnalyzer.FindDominantColors(pixels); 
 ```
 
-Configure the analyzer behavior:
+### Advanced (with configuration)
 ```csharp
 Color[] pixels;
 List<DominantColorCandidate> candidates = ColorAnalyzer.FindDominantColors(pixels, options => 
