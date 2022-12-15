@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SampleApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:skiaWpf="clr-namespace:SkiaSharp.Views.WPF;assembly=SkiaSharp.Views.WPF"
     Title="Dark Colors Demo"
     Width="800"
     Height="450"
@@ -15,139 +16,292 @@
         <local:MainViewModel />
     </Window.DataContext>
 
-    <ScrollViewer>
-        <ItemsControl ItemsSource="{Binding Examples}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock
-                                Margin="15,15,0,-5"
-                                FontSize="14"
-                                Foreground="#fff"
-                                Text="{Binding Title}" />
-                        
-                        <Border
-                        Margin="10,10,10,0"
-                        Padding="10"
-                        Background="#363636"
-                        CornerRadius="10">
-                            <StackPanel Orientation="Horizontal">
-
-                               
-
-                                <StackPanel>
-                                    <TextBlock
-                                    Margin="0,0,0,5"
-                                    Foreground="#fff"
-                                    Text="Base Color"
-                                    TextAlignment="Center" />
-                                    <Border
-                                    Width="90"
-                                    Height="60"
-                                    HorizontalAlignment="Left"
-                                    Background="{Binding BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}">
-                                        <Border
-                                        Padding="5"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Background="#40000000"
-                                        CornerRadius="5">
-                                            <StackPanel>
-                                                <TextBlock
-                                                Foreground="#fff"
-                                                Text="{Binding BaseColor, Converter={StaticResource ColorToHexConverter}}"
-                                                TextAlignment="Center" />
-                                            </StackPanel>
-                                        </Border>
-                                    </Border>
-                                </StackPanel>
-
+    <TabControl Background="Transparent" BorderThickness="0">
+        <TabItem Header="Blending">
+            <ScrollViewer>
+                <ItemsControl ItemsSource="{Binding ColorBlendingExamples}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
                                 <TextBlock
-                                Margin="10,0"
-                                VerticalAlignment="Center"
-                                FontSize="24"
-                                Foreground="#999"
-                                Text="+" />
-
-                                <StackPanel>
-                                    <TextBlock
-                                    Margin="0,0,0,5"
+                                    Margin="15,15,0,-5"
+                                    FontSize="14"
                                     Foreground="#fff"
-                                    Text="Layers"
-                                    TextAlignment="Center" />
-                                    <ItemsControl ItemsSource="{Binding Layers}">
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <WrapPanel />
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <Border
+                                    Text="{Binding Title}" />
+
+                                <Border
+                                    Margin="10,10,10,0"
+                                    Padding="10"
+                                    Background="#363636"
+                                    CornerRadius="10">
+                                    <StackPanel Orientation="Horizontal">
+
+
+
+                                        <StackPanel>
+                                            <TextBlock
+                                                Margin="0,0,0,5"
+                                                Foreground="#fff"
+                                                Text="Base Color"
+                                                TextAlignment="Center" />
+                                            <Border
                                                 Width="90"
                                                 Height="60"
-                                                Background="{Binding Color, Converter={StaticResource ColorToSolidColorBrushConverter}}">
-                                                    <Border
+                                                HorizontalAlignment="Left"
+                                                Background="{Binding BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}">
+                                                <Border
                                                     Padding="5"
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"
                                                     Background="#40000000"
                                                     CornerRadius="5">
-                                                        <StackPanel>
-                                                            <TextBlock
+                                                    <StackPanel>
+                                                        <TextBlock
                                                             Foreground="#fff"
-                                                            Text="{Binding Color, Converter={StaticResource ColorToHexConverter}}"
+                                                            Text="{Binding BaseColor, Converter={StaticResource ColorToHexConverter}}"
                                                             TextAlignment="Center" />
-                                                            <TextBlock
-                                                            Foreground="#fff"
-                                                            Text="{Binding AmountPercentage, StringFormat=' {0}%'}"
-                                                            TextAlignment="Center" />
-                                                        </StackPanel>
-                                                    </Border>
+                                                    </StackPanel>
                                                 </Border>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
-                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
 
+                                        <TextBlock
+                                            Margin="10,0"
+                                            VerticalAlignment="Center"
+                                            FontSize="24"
+                                            Foreground="#999"
+                                            Text="+" />
+
+                                        <StackPanel>
+                                            <TextBlock
+                                                Margin="0,0,0,5"
+                                                Foreground="#fff"
+                                                Text="Layers"
+                                                TextAlignment="Center" />
+                                            <ItemsControl ItemsSource="{Binding Layers}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <WrapPanel />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Border
+                                                            Width="90"
+                                                            Height="60"
+                                                            Background="{Binding Color, Converter={StaticResource ColorToSolidColorBrushConverter}}">
+                                                            <Border
+                                                                Padding="5"
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Background="#40000000"
+                                                                CornerRadius="5">
+                                                                <StackPanel>
+                                                                    <TextBlock
+                                                                        Foreground="#fff"
+                                                                        Text="{Binding Color, Converter={StaticResource ColorToHexConverter}}"
+                                                                        TextAlignment="Center" />
+                                                                    <TextBlock
+                                                                        Foreground="#fff"
+                                                                        Text="{Binding AmountPercentage, StringFormat=' {0}%'}"
+                                                                        TextAlignment="Center" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Border>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </StackPanel>
+
+                                        <TextBlock
+                                            Margin="10,0"
+                                            VerticalAlignment="Center"
+                                            FontSize="24"
+                                            Foreground="#999"
+                                            Text="=" />
+
+                                        <StackPanel>
+                                            <TextBlock
+                                                Margin="0,0,0,5"
+                                                Foreground="#fff"
+                                                Text="Result"
+                                                TextAlignment="Center" />
+                                            <Border
+                                                Width="90"
+                                                Height="60"
+                                                HorizontalAlignment="Left"
+                                                Background="{Binding ResultColor, Converter={StaticResource ColorToSolidColorBrushConverter}}">
+                                                <Border
+                                                    Padding="5"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="#40000000"
+                                                    CornerRadius="5">
+                                                    <StackPanel>
+                                                        <TextBlock
+                                                            Foreground="#fff"
+                                                            Text="{Binding ResultColor, Converter={StaticResource ColorToHexConverter}}"
+                                                            TextAlignment="Center" />
+                                                    </StackPanel>
+                                                </Border>
+                                            </Border>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </TabItem>
+        <TabItem Header="Analyzer">
+            <ScrollViewer>
+                <StackPanel>
+                    <TextBlock
+                        Margin="15,15,0,-5"
+                        FontSize="14"
+                        Foreground="#fff"
+                        Text="Settings" />
+
+                    <Border
+                        Margin="10,10,10,0"
+                        Padding="10"
+                        Background="#363636"
+                        CornerRadius="10">
+                        <WrapPanel>
+                            <StackPanel Margin="10,5" Orientation="Horizontal">
                                 <TextBlock
+                                    Margin="0,0,5,0"
+                                    Foreground="#999"
+                                    Text="MinBrightness:" />
+                                <TextBox Width="30" Text="{Binding ColorAnalyzerExample.Options.MinBrightness}" />
+                            </StackPanel>
+                            <StackPanel Margin="10,5" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,5,0"
+                                    Foreground="#999"
+                                    Text="MaxBrightness:" />
+                                <TextBox Width="30" Text="{Binding ColorAnalyzerExample.Options.MaxBrightness}" />
+                            </StackPanel>
+                            <StackPanel Margin="10,5" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,5,0"
+                                    Foreground="#999"
+                                    Text="MinSaturation:" />
+                                <TextBox Width="30" Text="{Binding ColorAnalyzerExample.Options.MinSaturation}" />
+                            </StackPanel>
+                            <StackPanel Margin="10,5" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,5,0"
+                                    Foreground="#999"
+                                    Text="MaxSaturation:" />
+                                <TextBox Width="30" Text="{Binding ColorAnalyzerExample.Options.MaxSaturation}" />
+                            </StackPanel>
+                            <StackPanel Margin="10,5" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,5,0"
+                                    Foreground="#999"
+                                    Text="MinSpaceCoverage:" />
+                                <TextBox Width="30" Text="{Binding ColorAnalyzerExample.Options.MinSpaceCoverage}" />
+                            </StackPanel>
+                            <StackPanel Margin="10,5" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,5,0"
+                                    Foreground="#999"
+                                    Text="MinNonGreyscaleScore:" />
+                                <TextBox Width="30" Text="{Binding ColorAnalyzerExample.Options.MinNonGreyscaleScore}" />
+                            </StackPanel>
+                            <StackPanel Margin="10,5" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,5,0"
+                                    Foreground="#999"
+                                    Text="ColorGrouping:" />
+                                <TextBox Width="30" Text="{Binding ColorAnalyzerExample.Options.ColorGrouping}" />
+                            </StackPanel>
+                            <StackPanel Margin="10,5" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,5,0"
+                                    Foreground="#999"
+                                    Text="MaxCandidateCount:" />
+                                <TextBox Width="30" Text="{Binding ColorAnalyzerExample.Options.MaxCandidateCount}" />
+                            </StackPanel>
+                            <Button
                                 Margin="10,0"
-                                VerticalAlignment="Center"
-                                FontSize="24"
-                                Foreground="#999"
-                                Text="=" />
+                                Padding="10,0"
+                                Command="{Binding ColorAnalyzerExample.UpdateCandidatesCommand}"
+                                Content="Update results" />
+                        </WrapPanel>
+                    </Border>
 
+                    <ItemsControl ItemsSource="{Binding ColorAnalyzerExample.Images}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock
-                                    Margin="0,0,0,5"
-                                    Foreground="#fff"
-                                    Text="Result"
-                                    TextAlignment="Center" />
                                     <Border
-                                    Width="90"
-                                    Height="60"
-                                    HorizontalAlignment="Left"
-                                    Background="{Binding ResultColor, Converter={StaticResource ColorToSolidColorBrushConverter}}">
-                                        <Border
-                                        Padding="5"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Background="#40000000"
-                                        CornerRadius="5">
+                                        Margin="10,10,10,0"
+                                        Padding="10"
+                                        Background="#363636"
+                                        CornerRadius="10">
+                                        <StackPanel Orientation="Horizontal">
+
                                             <StackPanel>
                                                 <TextBlock
-                                                Foreground="#fff"
-                                                Text="{Binding ResultColor, Converter={StaticResource ColorToHexConverter}}"
-                                                TextAlignment="Center" />
+                                                    Margin="0,0,0,5"
+                                                    Foreground="#fff"
+                                                    Text="Source image" />
+                                                <Image
+                                                    Width="150"
+                                                    Height="150"
+                                                    Margin="0,0,10,0"
+                                                    VerticalAlignment="Top"
+                                                    Source="{Binding BitmapSource}" />
                                             </StackPanel>
-                                        </Border>
+
+                                            <StackPanel>
+                                                <TextBlock
+                                                    Margin="0,0,0,5"
+                                                    Foreground="#fff"
+                                                    Text="Dominant color candidates" />
+
+                                                <ItemsControl ItemsSource="{Binding Candidates}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border
+                                                                Width="600"
+                                                                Height="40"
+                                                                Background="{Binding Color, Converter={StaticResource ColorToSolidColorBrushConverter}}">
+                                                                <Border
+                                                                    Margin="5"
+                                                                    Padding="5"
+                                                                    HorizontalAlignment="Left"
+                                                                    VerticalAlignment="Center"
+                                                                    Background="#40000000"
+                                                                    CornerRadius="5">
+                                                                    <TextBlock Foreground="#fff" TextAlignment="Center">
+                                                                        <Run Text="{Binding Color, Converter={StaticResource ColorToHexConverter}}" />
+                                                                        <Run Text=" " />
+                                                                        <Run Text="{Binding SpaceCoverage, StringFormat='Space coverage: {0:p2}'}" />
+                                                                        <Run Text=" " />
+                                                                        <Run Text="{Binding NonGreyscaleScore, StringFormat='Non greyscale score: {0:p2}'}" />
+                                                                        <Run Text=" " />
+                                                                        <Run Text="{Binding Brightness, StringFormat='Brightness: {0:n2}'}" />
+                                                                        <Run Text=" " />
+                                                                        <Run Text="{Binding Saturation, StringFormat='Saturation: {0:n2}'}" />
+                                                                    </TextBlock>
+                                                                </Border>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
+                                        </StackPanel>
                                     </Border>
                                 </StackPanel>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </ScrollViewer>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+    </TabControl>
 </Window>
