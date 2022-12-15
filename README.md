@@ -96,6 +96,8 @@ var twoColorsCombined = baseColor.Combine(colorToAdd);
 
 Find dominant color in an image.
 
+<img src="assets/sample_screenshot_analyzer.png?raw=true">
+
 ```csharp
 Color[] pixels; //array of pixels that represents an image
 List<DominantColorCandidate> candidates = ColorAnalyzer.FindDominantColors(pixels); //returns a list of dominant color candidates, ordered by probability
