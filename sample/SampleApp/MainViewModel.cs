@@ -1,4 +1,5 @@
 ﻿using DarkColors;
+using SampleApp.Properties;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -6,29 +7,34 @@ namespace SampleApp;
 
 public class MainViewModel
 {
-    public List<ColorBlendingExample> Examples { get; } = new();
+    public List<ColorBlendingExample> ColorBlendingExamples { get; } = new();
+    public ColorAnalyzerExample ColorAnalyzerExample { get; }
 
     public MainViewModel()
     {
-        Examples.Add(new ColorBlendingExample("A bit of gray", Hex("#000"), new ColorLayer(Hex("#fff"), 25)));
-        Examples.Add(new ColorBlendingExample("Fifty shades", Hex("#000"), new ColorLayer(Hex("#fff"), 50)));
-        Examples.Add(new ColorBlendingExample("Bright green", Hex("#007d40"), new ColorLayer(Hex("#fff"), 75)));
+        ColorBlendingExamples.Add(new ColorBlendingExample("A bit of gray", Hex("#000"), new ColorLayer(Hex("#fff"), 25)));
+        ColorBlendingExamples.Add(new ColorBlendingExample("Fifty shades", Hex("#000"), new ColorLayer(Hex("#fff"), 50)));
+        ColorBlendingExamples.Add(new ColorBlendingExample("Bright green", Hex("#007d40"), new ColorLayer(Hex("#fff"), 75)));
 
-        Examples.Add(new ColorBlendingExample("Is it blue or purple?", Hex("#000"), new ColorLayer(Hex("#4056F4"), 60)));
+        ColorBlendingExamples.Add(new ColorBlendingExample("Is it blue or purple?", Hex("#000"), new ColorLayer(Hex("#4056F4"), 60)));
 
-        Examples.Add(new ColorBlendingExample("More than two colors", Hex("#007d40"), new ColorLayer[]
+        ColorBlendingExamples.Add(new ColorBlendingExample("More than two colors", Hex("#007d40"), new ColorLayer[]
         {
             new ColorLayer(Hex("#4056F4"), 42),
             new ColorLayer(Hex("#B1740F"), 28)
         }));
 
-        Examples.Add(new ColorBlendingExample("Both alpha transparency and amount percentage used", Hex("#000"), new ColorLayer(Hex("#804056F4"), 55)));
+        ColorBlendingExamples.Add(new ColorBlendingExample("Both alpha transparency and amount percentage used", Hex("#000"), new ColorLayer(Hex("#804056F4"), 55)));
 
-        Examples.Add(new ColorBlendingExample("Combo - both alpha transparency and amount percentage used for multiple colors", Hex("#007d40"), new ColorLayer[]
+        ColorBlendingExamples.Add(new ColorBlendingExample("Combo - both alpha transparency and amount percentage used for multiple colors", Hex("#007d40"), new ColorLayer[]
         {
             new ColorLayer(Hex("#804056F4"), 71),
             new ColorLayer(Hex("#5CB1740F"), 20)
         }));
+
+        var demoBitmaps = new[] { Resources.vildhjarta, Resources.rivers, Resources.abovebelow, Resources.greylotus, Resources.currents, Resources.dali, Resources.metallica, Resources.northlane };
+
+        ColorAnalyzerExample = new(demoBitmaps);
     }
 
     private static Color Hex(string hex)

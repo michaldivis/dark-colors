@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace DarkColors;
 
@@ -18,6 +19,12 @@ public class ColorLayer
     /// </summary>
     public int AmountPercentage { get; }
 
+    /// <summary>
+    /// Creates an instance of a <see cref="ColorLayer"/>
+    /// </summary>
+    /// <param name="color">The color associated with the layer</param>
+    /// <param name="amountPercentage">The amount of the color to use in percent (0-100)</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when <see cref="AmountPercentage"/> is out of range (0-100)</exception>
     public ColorLayer(Color color, int amountPercentage)
 	{
 		if(amountPercentage < 0 || amountPercentage > 100)

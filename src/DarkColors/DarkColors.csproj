@@ -1,15 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
 	<PropertyGroup>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageId>Divis.DarkColors</PackageId>
-		<Version>1.0.2</Version>
+		<Version>1.1.0</Version>
 		<Authors>michaldivis</Authors>
 		<Company>Michal Diviš</Company>
 		<Product>Dark Colors</Product>

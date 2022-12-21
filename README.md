@@ -1,4 +1,4 @@
-<img src="assets/icon.png?raw=true" width="200">
+﻿<img src="assets/icon.png?raw=true" width="200">
 
 # Dark Colors
 
@@ -89,3 +89,29 @@ var baseColor = Color.FromArgb(0, 0, 0);
 var colorToAdd = Color.FromArgb(125, 55, 13);
 var twoColorsCombined = baseColor.Combine(colorToAdd);
 ```
+
+## Color analyzer
+
+⚠️ Warning: this feature is pretty slow at the moment. It can process roughly one mega pixel per second, so it's not recommended to use it on large images.
+
+Find dominant color in an image.
+
+<img src="assets/sample_screenshot_analyzer.png?raw=true">
+
+### Basic usage
+```csharp
+//array of pixels that represents an image
+Color[] pixels; 
+//returns a list of dominant color candidates, ordered by probability
+List<DominantColorCandidate> candidates = ColorAnalyzer.FindDominantColors(pixels); 
+```
+
+### Advanced (with configuration)
+```csharp
+Color[] pixels;
+List<DominantColorCandidate> candidates = ColorAnalyzer.FindDominantColors(pixels, options => 
+{
+	options.MinSaturation = 0.4f,
+	options.MinSpaceCoverage = 0.05f,
+	options.ColorGrouping = 0.3f
+});
