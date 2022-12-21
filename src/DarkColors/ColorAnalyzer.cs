@@ -42,13 +42,24 @@ public static class ColorAnalyzer
     /// <param name="pixels">Pixels of the image</param>
     /// <param name="options">Configuration</param>
     /// <returns>A list of dominant color candidates</returns>
+    /// <exception cref="ArgumentException" />
     /// <exception cref="ArgumentNullException" />
     /// <exception cref="ArgumentOutOfRangeException" />
     public static List<DominantColorCandidate> FindDominantColors(Color[] pixels, DominantColorAnalyzerOptions options)
     {
-        if(options is null)
+        if (pixels is null)
         {
-            throw new ArgumentNullException(nameof(options), $"{nameof(options)} cannot be null");
+            throw new ArgumentNullException(nameof(pixels));
+        }
+        
+        if (pixels.Length == 0)
+        {
+            throw new ArgumentException($"{nameof(pixels)} cannot be empty", nameof(pixels));
+        }
+
+        if (options is null)
+        {
+            throw new ArgumentNullException(nameof(options));
         }
 
         options.Validate();

@@ -92,7 +92,7 @@ var twoColorsCombined = baseColor.Combine(colorToAdd);
 
 ## Color analyzer
 
-⚠️ Warning: this feature is pretty slow at the moment.
+⚠️ Warning: this feature is pretty slow at the moment. It can process roughly one mega pixel per second, so it's not recommended to use it on large images.
 
 Find dominant color in an image.
 

@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\sample\SampleApp\SampleApp.csproj" />
     <ProjectReference Include="..\..\src\DarkColors\DarkColors.csproj" />
   </ItemGroup>
 
